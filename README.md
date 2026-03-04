@@ -16,7 +16,6 @@ Các bước thực hiện:
   - Pixels Per Unit
   - Filter Mode
 - Kiểm tra sprite hiển thị trong Scene.
-
 Kết quả:
 !<img width="975" height="519" alt="image" src="https://github.com/user-attachments/assets/4f2be17e-9d92-4978-a818-1f741d6bd1e6" />
 
@@ -33,7 +32,8 @@ Các bước:
 - Add Component: `Sprite Renderer`
 - Gán sprite vào renderer
 - Điều chỉnh transform để hiển thị đúng vị trí.
-
+Trả lời câu hỏi :
+- PPU quyết định tỷ lệ kích thước sprite trong game world và giúp các sprite có tỉ lệ hiển thị đồng nhất.
 Kết quả:
 !<img width="975" height="516" alt="image" src="https://github.com/user-attachments/assets/62099f4c-3562-4af8-817b-22812f2d1103" />
 !<img width="974" height="516" alt="image" src="https://github.com/user-attachments/assets/f1f81b66-901c-4e11-9655-eaf64c89b6ff" />
@@ -69,6 +69,8 @@ Các bước:
   - Automatic slicing
   - Grid slicing
 - Chỉnh sửa outline để tối ưu polygon.
+Trả lời câu hỏi :
+Edit Outline được dùng khi cần giảm phần mesh thừa, tối ưu hiệu năng và làm vùng bao sprite chính xác hơn.
 
 Kết quả:
 !<img width="975" height="519" alt="image" src="https://github.com/user-attachments/assets/6f4f47c5-051d-49b2-8093-72d690a3aa9d" />
@@ -105,7 +107,9 @@ Các bước:
 - Tạo Animation Clip
 - Dùng Record Mode để tạo keyframes
 - Thử chỉnh property trong Preview Mode.
-
+Trả lời câu hỏi :
+Record Mode → thay đổi sẽ tự ghi keyframe.
+Preview Mode → chỉ xem thử, không ghi keyframe tự động.
 Demo:
 https://github.com/user-attachments/assets/8be92fee-0e01-4333-8b72-f36141e6c8da
 
@@ -127,4 +131,18 @@ https://github.com/user-attachments/assets/0c9d2c3d-eb00-48f8-8499-1ed591d6fda4
 
 ---
 https://github.com/user-attachments/assets/0c9d2c3d-eb00-48f8-8499-1ed591d6fda4
+
+# Mini Project 
+
+Quy trình bắt đầu bằng việc import sprite hoặc sprite sheet vào Unity và thiết lập Texture Type = Sprite (2D and UI). Nếu là sprite sheet, sử dụng Sprite Editor để cắt (slice) thành nhiều frame sprite riêng lẻ.
+
+Sau đó, các sprite này được sử dụng để tạo Animation Clip trong Animation Window. Bằng cách sử dụng Record Mode, các frame sprite được sắp xếp theo timeline để tạo chuyển động như Idle, Run hoặc Attack.
+
+Tiếp theo, các animation clip được đưa vào Animator Controller để xây dựng state machine. Trong Animator, các state như Idle, Run và Attack được kết nối bằng transition và điều khiển bằng parameters (ví dụ: Speed, Attack).
+
+Cuối cùng, một script C# được dùng để đọc input từ người chơi và gọi Animator API (như SetFloat, SetTrigger) để thay đổi trạng thái animation trong game.
+
+Workflow tổng thể:
+
+Sprite Import → Sprite Slice → Animation Clip → Animator Controller → Script Control
 
